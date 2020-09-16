@@ -1,0 +1,169 @@
+% Exam Template for UMTYMP and Math Department courses
+%
+% Using Philip Hirschhorn's exam.cls: http://www-math.mit.edu/~psh/#ExamCls
+%
+% run pdflatex on a finished exam at least three times to do the grading table on front page.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% These lines can probably stay unchanged, although you can remove the last
+% two packages if you're not making pictures with tikz.
+\documentclass[11pt]{exam}
+\RequirePackage{amssymb, amsfonts, amsmath, latexsym, verbatim, xspace, setspace, blkarray, multirow, array}
+\RequirePackage{tikz, pgflibraryplotmarks, pgfplotstable}
+\RequirePackage{booktabs,pgfplots,pgfplotstable}
+
+% By default LaTeX uses large margins.  This doesn't work well on exams; problems
+% end up in the "middle" of the page, reducing the amount of space for students
+% to work on them.
+\usepackage[margin=1in]{geometry}
+
+
+% Here's where you edit the Class, Exam, Date, etc.
+\newcommand{\class}{Simulaci\'on}
+\newcommand{\code}{}
+\newcommand{\term}{Primavera 2018}
+\newcommand{\examnum}{Certamen 1}
+\newcommand{\examdate}{27/11/18}
+\newcommand{\timelimit}{90 Minutos}
+
+% For an exam, single spacing is most appropriate
+\singlespacing
+% \onehalfspacing
+% \doublespacing
+
+% For an exam, we generally want to turn off paragraph indentation
+\parindent 0ex
+
+%
+\begin{document} 
+
+% These commands set up the running header on the top of the exam pages
+\pagestyle{head}
+\firstpageheader{}{}{}
+\runningheader{\class}{\examnum\ - P\'agina \thepage\ de \numpages}{\examdate}
+\runningheadrule
+
+\begin{flushright}
+\begin{tabular}{p{2.8in} r l}
+\textbf{\class} & \textbf{Nombre:} & \makebox[2in]{\hrulefill}\\
+\textbf{\code} && \textbf{C\'odigo de honor:} \\
+\textbf{\term} && No he dado ni recibido\\
+\textbf{\examnum} && ayuda durante este certamen\\
+\textbf{\examdate} && \\
+\textbf{Tiempo l\'imite: \timelimit} & \textbf{Firma} & \makebox[2in]{\hrulefill}
+\end{tabular}\\
+\end{flushright}
+\rule[1ex]{\textwidth}{.1pt}
+
+
+Este certamen contiene \numpages\ p\'aginas (incluyendo esta cubierta) y 
+\numquestions\ preguntas.  Cerciorece que su copia contiene todas las p\'aginas.  Ponga su iniciales arriba de cada p\'agina en el caso de que separe las hojas y estas se puedan perder.\\
+
+Usted \textbf{PUEDE} utilizar una hoja A4 escrita en una de sus carillas para el certamen.\\
+
+Se requiere que muestre su trabajo para cada problema en este certamen.  Las siguientes reglas aplican:\\
+
+\begin{minipage}[t]{3.7in}
+\vspace{0pt}
+\begin{itemize}
+
+\item \textbf{Organize su trabajo}, de forma razonablemente ordenada, en el espacio entregado. Trabajo desorganizado dif\'icil de evaluar recibir\'a poco o nada de puntaje (independiente de su exactitud). 
+
+\item \textbf{Respuestas misteriosas o sin fundamentos no recibir\'an puntaje}.  Una respuesta correcta, sin soporte de calculos, explicaci\'on, o trabajo algebraico \textbf{NO} recibir\'a puntaje; una respuesta incorrecta que sea el resultado de calculos intermedios correctos podr\'ia recibir puntaje parcial.
+
+\item Si necesita mas espacio, use el reverso de la p\'agina; indique claramente cuando haga esto.
+\end{itemize}
+
+No escriba en la tabla a la derecha.
+\end{minipage}
+\hfill
+\begin{minipage}[t]{2.3in}
+\vspace{0pt}
+%\cellwidth{3em}
+\gradetablestretch{2}
+\vqword{Problem}
+\addpoints % required here by exam.cls, even though questions haven't started yet.	
+\gradetable[v]%[pages]  % Use [pages] to have grading table by page instead of question
+
+\end{minipage}
+\newpage % End of cover page
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% See http://www-math.mit.edu/~psh/#ExamCls for full documentation, but the questions
+% below give an idea of how to write questions [with parts] and have the points
+% tracked automatically on the cover page.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{questions}
+\section*{N\'umeros Aleatorios}
+% Basic question
+\addpoints
+\question Utilizando los par\'ametros $Z_0=1$, $a=630.360.016$, $c=0$, y $m=2.147.483.647$, 
+\begin{parts}
+\part[9] Genere 3 n\'umeros aleat\'orios utilizando el Generador de Congruencia Lineal explicado en clases.
+\fillwithlines{5 in}
+\part[6] Usted quiere establecer semillas que estan 100 n\'umeros aparte, determine $Z_{100}$
+\fillwithlines{2 in}
+\end{parts}
+
+
+\section*{Variables Aleatorias}
+\question Utilizando los n\'umeros aleatorios 0.6754, 0.8602.
+
+\begin{parts}
+\part[5] Genere una variable aleatoria uniforme entre 5 y 12 usando el primer n\'umero aleatorio.
+\fillwithlines{3.8 in}
+\part[5] Genere una variable aleatoria exponencial con $\lambda = 5$ usando el segundo n\'umero aleatorio
+\fillwithlines{3.8 in}
+\part[5] Utilizando una mezcla de las dos distribuciones anteriores con pesos $p_1 = 0.3$ y $p_2 = 1-p_1$, y con n\'umeros aleatorios 0.1453, 0.8763 genere una variable aleatoria mixta.
+\fillwithlines{2 in}
+\end{parts}
+
+\section*{Procesos Especiales}
+
+\question Usted necesita determinar los tiempos de llegada de un proceso de intensidad variable en el tiempo. La siguiente informaci\'on ha sido obtenida:
+
+ \[\lambda(x)=
+\begin{cases}
+3&\text{for $x\in[0,3[$}\\
+6&\text{for $x\in[3,5[$}\\
+1&\text{for $x\in[5,7]$}\\
+\end{cases}
+\]
+
+\begin{parts}
+\part[10] Determine la distribuci\'on inversa acumulada.
+\fillwithlines{4.2 in}
+\part[5] Utilizando los siguientes n\'umeros aleatorios: 0.872, 0.145, y 0.543 determine el tiempo de las primeras tres llegadas al sistema.
+\fillwithlines{3 in}
+\end{parts}
+
+\section*{Comparaci\'on de sistemas alternativos}
+%\iffalse
+\question Usted desea saber si dos configuraciones de su sistema son estad\'isticamente diferentes y ha recolectado la siguiente informaci\'on.
+ \begin{table}[h!]
+	\centering
+    \setlength{\extrarowheight}{2pt}
+    \begin{tabular}{ccccccccccc}
+		\toprule
+		Experiment & Rep 1& Rep 2& Rep 3& Rep 4& Rep 5\\
+		\midrule
+			+ + + & 13.4 & 14.78 & 18.52 & 9.56 & 9.92 \\
+			+ - + & 7.45 & 9.67 & 8.92 & 5.32 & 6.65 \\
+		\bottomrule
+    \end{tabular}
+  \end{table}
+\begin{parts}
+\part[10] Determine si las configuraciones producen resultados estad\'isticamente diferentes. Asuma que se utilizaron n\'umeros aleatorios comunes.
+\fillwithlines{2.8 in}
+\newpage
+\fillwithlines{2.8 in}
+\part[5] Usted quiere reducir el ancho medio de primer experimento a un 20\% de su valor inical. ?`Cu\'antas muestras adicionales necesita?
+\fillwithlines{2 in}
+
+\end{parts}
+\end{questions}
+\end{document}
