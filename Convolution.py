@@ -96,3 +96,4 @@ conv = SumDist(lista)
 out = conv.generate(50000)
 plt.hist(out)
 
+
